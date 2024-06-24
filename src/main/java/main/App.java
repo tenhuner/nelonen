@@ -7,13 +7,12 @@ public class App {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int choice;
+        String choice;
         do {
             printMenu();
-            choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            choice = scanner.nextLine();
             handleChoice(choice);
-        } while (choice != 0);
+        } while (!choice.equals("0"));
     }
 
     private static void printMenu() {
@@ -28,33 +27,33 @@ public class App {
         System.out.println("0) Lopeta ohjelma");
     }
 
-    private static void handleChoice(int choice) {
+    private static void handleChoice(String choice) {
         switch (choice) {
-            case 1:
+            case "1":
                 addStudent();
                 break;
-            case 2:
+            case "2":
                 listStudents();
                 break;
-            case 3:
+            case "3":
                 addGradeToStudent();
                 break;
-            case 4:
+            case "4":
                 listStudentGrades();
                 break;
-            case 5:
+            case "5":
                 calculateAverage();
                 break;
-            case 6:
+            case "6":
                 calculateMedian();
                 break;
-            case 7:
+            case "7":
                 saveStudents();
                 break;
-            case 8:
+            case "8":
                 loadStudents();
                 break;
-            case 0:
+            case "0":
                 System.out.println("Kiitos ohjelman käytöstä.");
                 break;
             default:
@@ -77,29 +76,25 @@ public class App {
     private static void addGradeToStudent() {
         university.listStudents();
         System.out.println("Mille opiskelijalle suorite lisätään?");
-        int studentIndex = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int studentIndex = Integer.parseInt(scanner.nextLine());
         System.out.println("Mille kurssille suorite lisätään?");
         String course = scanner.nextLine();
         System.out.println("Mikä arvosana kurssille lisätään?");
-        int grade = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int grade = Integer.parseInt(scanner.nextLine());
         university.getStudent(studentIndex).addGrade(course, grade);
     }
 
     private static void listStudentGrades() {
         university.listStudents();
         System.out.println("Minkä opiskelijan suoritteet listataan?");
-        int studentIndex = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int studentIndex = Integer.parseInt(scanner.nextLine());
         university.getStudent(studentIndex).listGrades();
     }
 
     private static void calculateAverage() {
         university.listStudents();
         System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
-        int studentIndex = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int studentIndex = Integer.parseInt(scanner.nextLine());
         double average = Calculator.getAverageGrade(university.getStudent(studentIndex));
         System.out.println("Keskiarvo on " + average);
     }
@@ -107,8 +102,7 @@ public class App {
     private static void calculateMedian() {
         university.listStudents();
         System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
-        int studentIndex = scanner.nextInt();
-        scanner.nextLine(); // consume newline
+        int studentIndex = Integer.parseInt(scanner.nextLine());
         double median = Calculator.getMedianGrade(university.getStudent(studentIndex));
         System.out.println("Mediaani on " + median);
     }
@@ -121,4 +115,3 @@ public class App {
         university.loadFromFile("students.dat");
     }
 }
-

@@ -24,7 +24,7 @@ public class Calculator {
         // Kopioidaan lista, jotta alkuperäinen lista ei muutu
         List<Grade> sortedGrades = new ArrayList<>(grades);
         sortedGrades.sort((g1, g2) -> Integer.compare(g1.getGrade(), g2.getGrade()));
-        
+
         int size = sortedGrades.size();
         if (size % 2 == 1) {
             return sortedGrades.get(size / 2).getGrade();
@@ -33,5 +33,3 @@ public class Calculator {
         }
     }
 }
-
-
