@@ -1,6 +1,6 @@
 package main;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
@@ -21,6 +21,7 @@ public class Calculator {
         if (grades.isEmpty()) {
             return 0;
         }
+        // Kopioidaan lista, jotta alkuperäinen lista ei muutu
         List<Grade> sortedGrades = new ArrayList<>(grades);
         sortedGrades.sort((g1, g2) -> Integer.compare(g1.getGrade(), g2.getGrade()));
         
@@ -32,4 +33,7 @@ public class Calculator {
         }
     }
 }
+
+}
+
 
