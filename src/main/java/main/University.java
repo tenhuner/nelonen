@@ -20,14 +20,22 @@ public class University {
     }
 
     public void listStudents() {
-        for (int i = 0; i < students.size(); i++) {
-            Student s = students.get(i);
-            System.out.println(i + ": " + s.getStudentNumber() + ": " + s.getName());
+        for (Student s : students) {
+            System.out.println(s.getStudentNumber() + ": " + s.getName());
         }
     }
 
-    public Student getStudent(int index) {
-        return students.get(index);
+    public Student getStudent(String studentNumber) {
+        for (Student s : students) {
+            if (s.getStudentNumber().equals(studentNumber)) {
+                return s;
+            }
+        }
+        return null; // or throw an exception if student is not found
+    }
+
+    public List<Student> getStudents() {
+        return students;
     }
 
     public void saveToFile(String filename) {

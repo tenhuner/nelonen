@@ -74,37 +74,57 @@ public class App {
     }
 
     private static void addGradeToStudent() {
-        university.listStudents();
-        System.out.println("Mille opiskelijalle suorite lisätään?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        System.out.println("Mille kurssille suorite lisätään?");
-        String course = scanner.nextLine();
-        System.out.println("Mikä arvosana kurssille lisätään?");
-        int grade = Integer.parseInt(scanner.nextLine());
-        university.getStudent(studentIndex).addGrade(course, grade);
+        listStudents();
+        System.out.println("Anna opiskelijan opiskelijanumero, jolle suorite lisätään:");
+        String studentNumber = scanner.nextLine();
+        Student student = university.getStudent(studentNumber);
+        if (student != null) {
+            System.out.println("Mille kurssille suorite lisätään?");
+            String course = scanner.nextLine();
+            System.out.println("Mikä arvosana kurssille lisätään?");
+            int grade = Integer.parseInt(scanner.nextLine());
+            student.addGrade(course, grade);
+        } else {
+            System.out.println("Opiskelijaa ei löytynyt.");
+        }
     }
 
     private static void listStudentGrades() {
-        university.listStudents();
-        System.out.println("Minkä opiskelijan suoritteet listataan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        university.getStudent(studentIndex).listGrades();
+        listStudents();
+        System.out.println("Anna opiskelijan opiskelijanumero, jonka suoritteet listataan:");
+        String studentNumber = scanner.nextLine();
+        Student student = university.getStudent(studentNumber);
+        if (student != null) {
+            student.listGrades();
+        } else {
+            System.out.println("Opiskelijaa ei löytynyt.");
+        }
     }
 
     private static void calculateAverage() {
-        university.listStudents();
-        System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        double average = Calculator.getAverageGrade(university.getStudent(studentIndex));
-        System.out.println("Keskiarvo on " + average);
+        listStudents();
+        System.out.println("Anna opiskelijan opiskelijanumero, jonka suoritusten keskiarvo lasketaan:");
+        String studentNumber = scanner.nextLine();
+        Student student = university.getStudent(studentNumber);
+        if (student != null) {
+            double average = Calculator.getAverageGrade(student);
+            System.out.println("Keskiarvo on " + average);
+        } else {
+            System.out.println("Opiskelijaa ei löytynyt.");
+        }
     }
 
     private static void calculateMedian() {
-        university.listStudents();
-        System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        double median = Calculator.getMedianGrade(university.getStudent(studentIndex));
-        System.out.println("Mediaani on " + median);
+        listStudents();
+        System.out.println("Anna opiskelijan opiskelijanumero, jonka suoritusten mediaani lasketaan:");
+        String studentNumber = scanner.nextLine();
+        Student student = university.getStudent(studentNumber);
+        if (student != null) {
+            double median = Calculator.getMedianGrade(student);
+            System.out.println("Mediaani on " + median);
+        } else {
+            System.out.println("Opiskelijaa ei löytynyt.");
+        }
     }
 
     private static void saveStudents() {
