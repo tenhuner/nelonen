@@ -55,8 +55,10 @@ public class App {
 
     private static void listStudents() {
         System.out.println("Opiskelijat:");
+        int index = 0;
         for (Student student : university.getStudents()) {
-            System.out.println(student.getStudentId() + ": " + student.getName());
+            System.out.println(index + ": " + student.getStudentId() + ": " + student.getName());
+            index++;
         }
     }
 

@@ -1,4 +1,5 @@
 package main;
+
 import java.io.Serializable;
 
 public class Grade implements Serializable {
@@ -17,4 +18,5 @@ public class Grade implements Serializable {
     public int getGrade() {
         return grade;
     }
+}
 }
