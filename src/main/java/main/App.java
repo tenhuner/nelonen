@@ -3,45 +3,62 @@ package main;
 import java.util.Scanner;
 
 public class App {
-    private static Scanner scanner = new Scanner(System.in);
     private static University university = new University();
-    private static Calculator calculator = new Calculator();
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        while (true) {
-            System.out.println("1) Lisää opiskelija, 2) Listaa opiskelijat, 3) Lisää opiskelijalle suorite, 4) Listaa opiskelijan suoritteet, 5) Laske opiskelijan suoritusten keskiarvo, 6) Laske opiskelijan suoritusten mediaani, 7) Tallenna opiskelijat tiedostoon, 8) Lataa opiskelijat tiedostosta, 0) Lopeta ohjelma");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    addStudent();
-                    break;
-                case 2:
-                    listStudents();
-                    break;
-                case 3:
-                    addGrade();
-                    break;
-                case 4:
-                    listGrades();
-                    break;
-                case 5:
-                    calculateAverage();
-                    break;
-                case 6:
-                    calculateMedian();
-                    break;
-                case 7:
-                    saveToFile();
-                    break;
-                case 8:
-                    loadFromFile();
-                    break;
-                case 0:
-                    System.out.println("Kiitos ohjelman käytöstä.");
-                    return;
-                default:
-                    System.out.println("Syöte oli väärä.");
-            }
+        int choice;
+        do {
+            printMenu();
+            choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+            handleChoice(choice);
+        } while (choice != 0);
+    }
+
+    private static void printMenu() {
+        System.out.println("1) Lisää opiskelija");
+        System.out.println("2) Listaa opiskelijat");
+        System.out.println("3) Lisää opiskelijalle suorite");
+        System.out.println("4) Listaa opiskelijan suoritteet");
+        System.out.println("5) Laske opiskelijan suoritusten keskiarvo");
+        System.out.println("6) Laske opiskelijan suoritusten mediaani");
+        System.out.println("7) Tallenna opiskelijat tiedostoon");
+        System.out.println("8) Lataa opiskelijat tiedostosta");
+        System.out.println("0) Lopeta ohjelma");
+    }
+
+    private static void handleChoice(int choice) {
+        switch (choice) {
+            case 1:
+                addStudent();
+                break;
+            case 2:
+                listStudents();
+                break;
+            case 3:
+                addGradeToStudent();
+                break;
+            case 4:
+                listStudentGrades();
+                break;
+            case 5:
+                calculateAverage();
+                break;
+            case 6:
+                calculateMedian();
+                break;
+            case 7:
+                saveStudents();
+                break;
+            case 8:
+                loadStudents();
+                break;
+            case 0:
+                System.out.println("Kiitos ohjelman käytöstä.");
+                break;
+            default:
+                System.out.println("Virheellinen valinta.");
         }
     }
 
@@ -49,64 +66,58 @@ public class App {
         System.out.println("Anna opiskelijan nimi?");
         String name = scanner.nextLine();
         System.out.println("Anna opiskelijan opiskelijanumero:");
-        String studentId = scanner.nextLine();
-        university.addStudent(new Student(name, studentId));
+        String studentNumber = scanner.nextLine();
+        university.addStudent(new Student(name, studentNumber));
     }
 
     private static void listStudents() {
-        System.out.println("Opiskelijat:");
-        int index = 0;
-        for (Student student : university.getStudents()) {
-            System.out.println(index + ": " + student.getStudentId() + ": " + student.getName());
-            index++;
-        }
+        university.listStudents();
     }
 
-    private static void addGrade() {
-        listStudents();
+    private static void addGradeToStudent() {
+        university.listStudents();
         System.out.println("Mille opiskelijalle suorite lisätään?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        Student student = university.getStudents().get(studentIndex);
+        int studentIndex = scanner.nextInt();
+        scanner.nextLine(); // consume newline
         System.out.println("Mille kurssille suorite lisätään?");
         String course = scanner.nextLine();
         System.out.println("Mikä arvosana kurssille lisätään?");
-        int grade = Integer.parseInt(scanner.nextLine());
-        student.addGrade(course, grade);
+        int grade = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        university.getStudent(studentIndex).addGrade(course, grade);
     }
 
-    private static void listGrades() {
-        listStudents();
+    private static void listStudentGrades() {
+        university.listStudents();
         System.out.println("Minkä opiskelijan suoritteet listataan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        Student student = university.getStudents().get(studentIndex);
-        for (Grade grade : student.getGrades()) {
-            System.out.println(grade.getCourse() + ": " + grade.getGrade());
-        }
+        int studentIndex = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        university.getStudent(studentIndex).listGrades();
     }
 
     private static void calculateAverage() {
-        listStudents();
+        university.listStudents();
         System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        Student student = university.getStudents().get(studentIndex);
-        double average = calculator.getAverageGrade(student);
+        int studentIndex = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        double average = Calculator.getAverageGrade(university.getStudent(studentIndex));
         System.out.println("Keskiarvo on " + average);
     }
 
     private static void calculateMedian() {
-        listStudents();
+        university.listStudents();
         System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
-        int studentIndex = Integer.parseInt(scanner.nextLine());
-        Student student = university.getStudents().get(studentIndex);
-        double median = calculator.getMedianGrade(student);
+        int studentIndex = scanner.nextInt();
+        scanner.nextLine(); // consume newline
+        double median = Calculator.getMedianGrade(university.getStudent(studentIndex));
         System.out.println("Mediaani on " + median);
     }
 
-    private static void saveToFile() {
+    private static void saveStudents() {
         university.saveToFile("students.dat");
     }
 
-    private static void loadFromFile() {
+    private static void loadStudents() {
         university.loadFromFile("students.dat");
     }
 }
