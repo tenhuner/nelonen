@@ -39,7 +39,7 @@ public class App {
                             break;
                         case 3:
                             university.listStudentsByIndex();
-                            System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijan numero)");
+                            System.out.println("Mille opiskelijalle suorite lisätään?");
                             int studentIndex = Integer.parseInt(sc.nextLine());
                             Student selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
@@ -56,9 +56,8 @@ public class App {
                             eventLogger.writeLog("Suorite lisätty: " + selectedStudent.getName() + " - " + course + ": " + gradeValue);
                             break;
                         case 4:
-                            System.out.println("Opiskelijat:");
                             university.listStudentsByIndex();
-                            System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijan numero)");
+                            System.out.println("Minkä opiskelijan suoritteet listataan?");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
@@ -70,7 +69,7 @@ public class App {
                         case 5:
                             System.out.println("Opiskelijat:");
                             university.listStudentsByIndex();
-                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijan numero)");
+                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
