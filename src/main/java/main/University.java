@@ -26,7 +26,13 @@ public class University {
         return null;
     }
 
-    public void listStudents() {
+    public void listStudentsById() {
+        for (Student student : students) {
+            System.out.println(student.getStudentId() + ": " + student.getName());
+        }
+    }
+
+    public void listStudentsByIndex() {
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
             System.out.println(i + ": " + student.getName());

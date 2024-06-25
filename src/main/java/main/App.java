@@ -35,11 +35,11 @@ public class App {
                             break;
                         case 2:
                             System.out.println("Opiskelijat:");
-                            university.listStudents();
+                            university.listStudentsById();
                             break;
                         case 3:
                             System.out.println("Opiskelijat:");
-                            university.listStudents();
+                            university.listStudentsByIndex();
                             System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijan numero)");
                             int studentIndex = Integer.parseInt(sc.nextLine());
                             Student selectedStudent = university.getStudentByIndex(studentIndex);
@@ -58,7 +58,7 @@ public class App {
                             break;
                         case 4:
                             System.out.println("Opiskelijat:");
-                            university.listStudents();
+                            university.listStudentsByIndex();
                             System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijan numero)");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
@@ -70,7 +70,7 @@ public class App {
                             break;
                         case 5:
                             System.out.println("Opiskelijat:");
-                            university.listStudents();
+                            university.listStudentsByIndex();
                             System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijan numero)");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
@@ -83,7 +83,7 @@ public class App {
                             break;
                         case 6:
                             System.out.println("Opiskelijat:");
-                            university.listStudents();
+                            university.listStudentsByIndex();
                             System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijan numero)");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
