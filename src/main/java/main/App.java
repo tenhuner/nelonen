@@ -80,7 +80,7 @@ public class App {
                             break;
                         case 6:
                             university.listStudentsByIndex();
-                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijan numero)");
+                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
                             studentIndex = Integer.parseInt(sc.nextLine());
                             selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
