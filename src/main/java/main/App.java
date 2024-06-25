@@ -34,13 +34,15 @@ public class App {
                             eventLogger.writeLog(student.getName() + " lisätty");
                             break;
                         case 2:
+                            System.out.println("Opiskelijat:");
                             university.listStudents();
                             break;
                         case 3:
+                            System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Mille opiskelijalle suorite lisätään?");
-                            int studentIndex = Integer.parseInt(sc.nextLine());
-                            Student selectedStudent = university.getStudentById(studentIndex);
+                            System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijanumero)");
+                            String studentNumber = sc.nextLine();
+                            Student selectedStudent = university.getStudentById(studentNumber);
 
                             System.out.println("Mille kurssille suorite lisätään?");
                             String course = sc.nextLine();
@@ -51,25 +53,28 @@ public class App {
                             eventLogger.writeLog("Suorite lisätty: " + selectedStudent.getName() + " - " + course + ": " + gradeValue);
                             break;
                         case 4:
+                            System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteet listataan?");
-                            studentIndex = Integer.parseInt(sc.nextLine());
-                            selectedStudent = university.getStudentById(studentIndex);
+                            System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijanumero)");
+                            studentNumber = sc.nextLine();
+                            selectedStudent = university.getStudentById(studentNumber);
                             selectedStudent.listGrades();
                             break;
                         case 5:
+                            System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
-                            studentIndex = Integer.parseInt(sc.nextLine());
-                            selectedStudent = university.getStudentById(studentIndex);
+                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijanumero)");
+                            studentNumber = sc.nextLine();
+                            selectedStudent = university.getStudentById(studentNumber);
                             double average = calculator.getAverageGrade(selectedStudent);
                             System.out.println("Keskiarvo on " + average);
                             break;
                         case 6:
+                            System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
-                            studentIndex = Integer.parseInt(sc.nextLine());
-                            selectedStudent = university.getStudentById(studentIndex);
+                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijanumero)");
+                            studentNumber = sc.nextLine();
+                            selectedStudent = university.getStudentById(studentNumber);
                             double median = calculator.getMedianGrade(selectedStudent);
                             System.out.println("Mediaani on " + median);
                             break;

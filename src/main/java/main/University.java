@@ -19,21 +19,24 @@ public class University {
         students.add(student);
     }
 
-    public Student getStudentById(int id) {
-        return students.get(id);
+    public Student getStudentById(String studentId) {
+        for (Student student : students) {
+            if (student.getStudentId().equals(studentId)) {
+                return student;
+            }
+        }
+        return null;
     }
 
     public void listStudents() {
-        int i = 0;
         for (Student student : students) {
-            System.out.println(i++ + ": " + student.getName() + " (" + student.getStudentId() + ")");
+            System.out.println(student.getStudentId() + ": " + student.getName());
         }
     }
 
     public void saveStudents() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
             oos.writeObject(students);
-            System.out.println("Opiskelijat tallennettu tiedostoon.");
         } catch (IOException e) {
             System.out.println("Virhe tallennettaessa opiskelijoita tiedostoon.");
             e.printStackTrace();
@@ -44,7 +47,6 @@ public class University {
     public void loadStudents() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
             students = (ArrayList<Student>) ois.readObject();
-            System.out.println("Opiskelijat ladattu tiedostosta.");
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Virhe ladattaessa opiskelijoita tiedostosta.");
             e.printStackTrace();
