@@ -37,8 +37,7 @@ public class App {
                             System.out.println("Opiskelijat:");
                             university.listStudentsById();
                             break;
-                        case 3:
-                            System.out.println("Opiskelijat:");
+                            case 3:
                             university.listStudentsByIndex();
                             System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijan numero)");
                             int studentIndex = Integer.parseInt(sc.nextLine());
