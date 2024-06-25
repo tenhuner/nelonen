@@ -40,9 +40,9 @@ public class App {
                         case 3:
                             System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijanumero)");
-                            String studentNumber = sc.nextLine();
-                            Student selectedStudent = university.getStudentById(studentNumber);
+                            System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijan numero)");
+                            int studentIndex = Integer.parseInt(sc.nextLine());
+                            Student selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
                                 System.out.println("Opiskelijaa ei löytynyt.");
                                 break;
@@ -59,9 +59,9 @@ public class App {
                         case 4:
                             System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijanumero)");
-                            studentNumber = sc.nextLine();
-                            selectedStudent = university.getStudentById(studentNumber);
+                            System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijan numero)");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
                                 System.out.println("Opiskelijaa ei löytynyt.");
                                 break;
@@ -71,9 +71,9 @@ public class App {
                         case 5:
                             System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijanumero)");
-                            studentNumber = sc.nextLine();
-                            selectedStudent = university.getStudentById(studentNumber);
+                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijan numero)");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
                                 System.out.println("Opiskelijaa ei löytynyt.");
                                 break;
@@ -84,9 +84,9 @@ public class App {
                         case 6:
                             System.out.println("Opiskelijat:");
                             university.listStudents();
-                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijanumero)");
-                            studentNumber = sc.nextLine();
-                            selectedStudent = university.getStudentById(studentNumber);
+                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijan numero)");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentByIndex(studentIndex);
                             if (selectedStudent == null) {
                                 System.out.println("Opiskelijaa ei löytynyt.");
                                 break;

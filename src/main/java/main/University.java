@@ -19,18 +19,17 @@ public class University {
         students.add(student);
     }
 
-    public Student getStudentById(String studentId) {
-        for (Student student : students) {
-            if (student.getStudentId().equals(studentId)) {
-                return student;
-            }
+    public Student getStudentByIndex(int index) {
+        if (index >= 0 && index < students.size()) {
+            return students.get(index);
         }
         return null;
     }
 
     public void listStudents() {
-        for (Student student : students) {
-            System.out.println(student.getStudentId() + ": " + student.getName());
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            System.out.println(i + ": " + student.getName());
         }
     }
 
