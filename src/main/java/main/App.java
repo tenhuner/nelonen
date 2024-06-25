@@ -67,7 +67,6 @@ public class App {
                             selectedStudent.listGrades();
                             break;
                         case 5:
-                            System.out.println("Opiskelijat:");
                             university.listStudentsByIndex();
                             System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
                             studentIndex = Integer.parseInt(sc.nextLine());
@@ -80,7 +79,6 @@ public class App {
                             System.out.println("Keskiarvo on " + average);
                             break;
                         case 6:
-                            System.out.println("Opiskelijat:");
                             university.listStudentsByIndex();
                             System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijan numero)");
                             studentIndex = Integer.parseInt(sc.nextLine());
