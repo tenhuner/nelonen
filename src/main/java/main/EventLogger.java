@@ -22,7 +22,6 @@ public class EventLogger {
             BufferedWriter logWriter = new BufferedWriter(new FileWriter(FILENAME, true));
             logWriter.write("[" + date.format(formatter) + "] " + logText + "\n");
             logWriter.close();
-            System.out.println("Logimerkintä kirjattu");
         } catch (IOException e) {
             System.out.println("Virhe kirjoitettaessa logitiedostoa");
         }

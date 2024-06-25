@@ -13,80 +13,84 @@ public class App {
         Calculator calculator = new Calculator();
 
         boolean exit = false;
-        while(!exit) {
+        while (!exit) {
             System.out.println("1) Lisää opiskelija, 2) Listaa opiskelijat, 3) Lisää opiskelijalle suorite, 4) Listaa opiskelijan suoritteet, 5) Laske opiskelijan suoritusten keskiarvo, 6) Laske opiskelijan suoritusten mediaani, 7) Tallenna opiskelijat tiedostoon, 8) Lataa opiskelijat tiedostosta, 0) Lopeta ohjelma");
 
-            if(sc.hasNext()) {
+            if (sc.hasNext()) {
                 int i = 0;
                 String stringInput = sc.nextLine();
-                i = Integer.parseInt(stringInput);
+                try {
+                    i = Integer.parseInt(stringInput);
 
-                switch(i) {
-                    case 1:
-                        System.out.println("Anna opiskelijan nimi?");
-                        String name = sc.nextLine();
-                        System.out.println("Anna opiskelijan opiskelijanumero:");
-                        String studentId = sc.nextLine();
+                    switch (i) {
+                        case 1:
+                            System.out.println("Anna opiskelijan nimi?");
+                            String name = sc.nextLine();
+                            System.out.println("Anna opiskelijan opiskelijanumero:");
+                            String studentId = sc.nextLine();
 
-                        Student student = new Student(name, studentId);
-                        university.addStudent(student);
-                        eventLogger.writeLog(student.getName() + " lisätty");
-                        break;
-                    case 2:
-                        university.listStudents();
-                        break;
-                    case 3:
-                        university.listStudents();
-                        System.out.println("Mille opiskelijalle suorite lisätään?");
-                        int studentIndex = Integer.parseInt(sc.nextLine());
-                        Student selectedStudent = university.getStudentById(studentIndex);
+                            Student student = new Student(name, studentId);
+                            university.addStudent(student);
+                            eventLogger.writeLog(student.getName() + " lisätty");
+                            break;
+                        case 2:
+                            university.listStudents();
+                            break;
+                        case 3:
+                            university.listStudents();
+                            System.out.println("Mille opiskelijalle suorite lisätään?");
+                            int studentIndex = Integer.parseInt(sc.nextLine());
+                            Student selectedStudent = university.getStudentById(studentIndex);
 
-                        System.out.println("Mille kurssille suorite lisätään?");
-                        String course = sc.nextLine();
-                        System.out.println("Mikä arvosana kurssille lisätään?");
-                        int gradeValue = Integer.parseInt(sc.nextLine());
+                            System.out.println("Mille kurssille suorite lisätään?");
+                            String course = sc.nextLine();
+                            System.out.println("Mikä arvosana kurssille lisätään?");
+                            int gradeValue = Integer.parseInt(sc.nextLine());
 
-                        selectedStudent.addGrade(course, gradeValue);
-                        eventLogger.writeLog("Suorite lisätty: " + selectedStudent.getName() + " - " + course + ": " + gradeValue);
-                        break;
-                    case 4:
-                        university.listStudents();
-                        System.out.println("Minkä opiskelijan suoritteet listataan?");
-                        studentIndex = Integer.parseInt(sc.nextLine());
-                        selectedStudent = university.getStudentById(studentIndex);
-                        selectedStudent.listGrades();
-                        break;
-                    case 5:
-                        university.listStudents();
-                        System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
-                        studentIndex = Integer.parseInt(sc.nextLine());
-                        selectedStudent = university.getStudentById(studentIndex);
-                        double average = calculator.getAverageGrade(selectedStudent);
-                        System.out.println("Keskiarvo on " + average);
-                        break;
-                    case 6:
-                        university.listStudents();
-                        System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
-                        studentIndex = Integer.parseInt(sc.nextLine());
-                        selectedStudent = university.getStudentById(studentIndex);
-                        double median = calculator.getMedianGrade(selectedStudent);
-                        System.out.println("Mediaani on " + median);
-                        break;
-                    case 7:
-                        university.saveStudents();
-                        eventLogger.writeLog("Opiskelijat tallennettu tiedostoon");
-                        break;
-                    case 8:
-                        university.loadStudents();
-                        eventLogger.writeLog("Opiskelijat ladattu tiedostosta");
-                        break;
-                    case 0:
-                        System.out.println("Kiitos ohjelman käytöstä.");
-                        exit = true;
-                        break;
-                    default:
-                        System.out.println("Syöte oli väärä");
-                        break;
+                            selectedStudent.addGrade(course, gradeValue);
+                            eventLogger.writeLog("Suorite lisätty: " + selectedStudent.getName() + " - " + course + ": " + gradeValue);
+                            break;
+                        case 4:
+                            university.listStudents();
+                            System.out.println("Minkä opiskelijan suoritteet listataan?");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentById(studentIndex);
+                            selectedStudent.listGrades();
+                            break;
+                        case 5:
+                            university.listStudents();
+                            System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentById(studentIndex);
+                            double average = calculator.getAverageGrade(selectedStudent);
+                            System.out.println("Keskiarvo on " + average);
+                            break;
+                        case 6:
+                            university.listStudents();
+                            System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
+                            studentIndex = Integer.parseInt(sc.nextLine());
+                            selectedStudent = university.getStudentById(studentIndex);
+                            double median = calculator.getMedianGrade(selectedStudent);
+                            System.out.println("Mediaani on " + median);
+                            break;
+                        case 7:
+                            university.saveStudents();
+                            eventLogger.writeLog("Opiskelijat tallennettu tiedostoon");
+                            break;
+                        case 8:
+                            university.loadStudents();
+                            eventLogger.writeLog("Opiskelijat ladattu tiedostosta");
+                            break;
+                        case 0:
+                            System.out.println("Kiitos ohjelman käytöstä.");
+                            exit = true;
+                            break;
+                        default:
+                            System.out.println("Syöte oli väärä");
+                            break;
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Syöte oli väärä");
                 }
             }
         }
