@@ -43,6 +43,10 @@ public class App {
                             System.out.println("Mille opiskelijalle suorite lisätään? (Anna opiskelijanumero)");
                             String studentNumber = sc.nextLine();
                             Student selectedStudent = university.getStudentById(studentNumber);
+                            if (selectedStudent == null) {
+                                System.out.println("Opiskelijaa ei löytynyt.");
+                                break;
+                            }
 
                             System.out.println("Mille kurssille suorite lisätään?");
                             String course = sc.nextLine();
@@ -58,6 +62,10 @@ public class App {
                             System.out.println("Minkä opiskelijan suoritteet listataan? (Anna opiskelijanumero)");
                             studentNumber = sc.nextLine();
                             selectedStudent = university.getStudentById(studentNumber);
+                            if (selectedStudent == null) {
+                                System.out.println("Opiskelijaa ei löytynyt.");
+                                break;
+                            }
                             selectedStudent.listGrades();
                             break;
                         case 5:
@@ -66,6 +74,10 @@ public class App {
                             System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan? (Anna opiskelijanumero)");
                             studentNumber = sc.nextLine();
                             selectedStudent = university.getStudentById(studentNumber);
+                            if (selectedStudent == null) {
+                                System.out.println("Opiskelijaa ei löytynyt.");
+                                break;
+                            }
                             double average = calculator.getAverageGrade(selectedStudent);
                             System.out.println("Keskiarvo on " + average);
                             break;
@@ -75,6 +87,10 @@ public class App {
                             System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan? (Anna opiskelijanumero)");
                             studentNumber = sc.nextLine();
                             selectedStudent = university.getStudentById(studentNumber);
+                            if (selectedStudent == null) {
+                                System.out.println("Opiskelijaa ei löytynyt.");
+                                break;
+                            }
                             double median = calculator.getMedianGrade(selectedStudent);
                             System.out.println("Mediaani on " + median);
                             break;

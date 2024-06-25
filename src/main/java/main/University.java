@@ -25,7 +25,7 @@ public class University {
                 return student;
             }
         }
-        return null;
+        return null; // Jos opiskelijaa ei löydy
     }
 
     public void listStudents() {
