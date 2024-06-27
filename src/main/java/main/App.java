@@ -1,11 +1,11 @@
-package main;
+package main; //Name of package
 
-import java.util.Scanner;
+import java.util.Scanner; // Import the Scanner class for user input
 
-public class App {
-    public static void main(String[] args) {
-        EventLogger eventLogger = new EventLogger();
-        eventLogger.writeLog("Ohjelma käynnistyi");
+public class App { // The main class of the application
+    public static void main(String[] args) { //Main method
+        EventLogger eventLogger = new EventLogger(); // Creates method to log 
+        eventLogger.writeLog("Ohjelma käynnistyi"); //Logs start of the program 
 
         Scanner sc = new Scanner(System.in);
 
