@@ -7,13 +7,13 @@ public class App { // The main class of the application
         EventLogger eventLogger = new EventLogger(); // Creates method to log 
         eventLogger.writeLog("Ohjelma käynnistyi"); //Logs start of the program 
 
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // Create a Scanner object for reading user input from the console
 
-        University university = new University();
-        Calculator calculator = new Calculator();
+        University university = new University(); // Create a University object to manage students
+        Calculator calculator = new Calculator();  // Create a Calculator object for calculating deliveries
 
-        boolean exit = false;
-        while (!exit) {
+        boolean exit = false; // Boolean variable that tells whether the program should be terminated
+        while (!exit) { // A loop that continues until the user decides to stop
             System.out.println("1) Lisää opiskelija, 2) Listaa opiskelijat, 3) Lisää opiskelijalle suorite, 4) Listaa opiskelijan suoritteet, 5) Laske opiskelijan suoritusten keskiarvo, 6) Laske opiskelijan suoritusten mediaani, 7) Tallenna opiskelijat tiedostoon, 8) Lataa opiskelijat tiedostosta, 0) Lopeta ohjelma");
 
             if (sc.hasNext()) {
