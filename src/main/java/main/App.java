@@ -16,11 +16,11 @@ public class App { // The main class of the application
         while (!exit) { // A loop that continues until the user decides to stop
             System.out.println("1) Lisää opiskelija, 2) Listaa opiskelijat, 3) Lisää opiskelijalle suorite, 4) Listaa opiskelijan suoritteet, 5) Laske opiskelijan suoritusten keskiarvo, 6) Laske opiskelijan suoritusten mediaani, 7) Tallenna opiskelijat tiedostoon, 8) Lataa opiskelijat tiedostosta, 0) Lopeta ohjelma");
 
-            if (sc.hasNext()) {
-                int i = 0;
-                String stringInput = sc.nextLine();
-                try {
-                    i = Integer.parseInt(stringInput);
+            if (sc.hasNext()) { // Check if user input exists
+                int i = 0; // Initialize a variable to store the selection
+                String stringInput = sc.nextLine(); // Read user input as a string
+                try { 
+                    i = Integer.parseInt(stringInput); // Try to convert a string input to an integer
 
                     switch (i) {
                         case 1:
@@ -106,12 +106,12 @@ public class App { // The main class of the application
                             System.out.println("Syöte oli väärä");
                             break;
                     }
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {  // Handle the case where the input is not a valid integer
                     System.out.println("Syöte oli väärä");
                 }
             }
         }
-        sc.close();
-        eventLogger.writeLog("Ohjelma lopetettu");
+        sc.close(); // Close the scanner
+        eventLogger.writeLog("Ohjelma lopetettu"); // Log the end of the program
     }
 }
